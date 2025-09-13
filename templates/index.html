@@ -2,76 +2,45 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NewsGuard - Fake News Detector</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
     <style>
+        /* Custom font from Google Fonts for a more modern look */
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: #f3f4f6;
-            color: #333;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-        }
-        .container {
-            background: white;
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-            width: 500px;
-            max-width: 90%;
-        }
-        h2 {
-            text-align: center;
-            margin-bottom: 20px;
-            color: #007BFF;
-        }
-        textarea {
-            width: 100%;
-            height: 150px;
-            padding: 12px;
-            border: 1px solid #ccc;
-            border-radius: 6px;
-            resize: none;
-            font-size: 16px;
-        }
-        button {
-            margin-top: 15px;
-            width: 100%;
-            padding: 12px;
-            background: #007BFF;
-            color: white;
-            border: none;
-            border-radius: 6px;
-            font-size: 16px;
-            cursor: pointer;
-        }
-        button:hover {
-            background: #0056b3;
-        }
-        .result {
-            margin-top: 20px;
-            text-align: center;
-            font-size: 20px;
-            font-weight: bold;
-        }
-        .real {
-            color: green;
-        }
-        .fake {
-            color: red;
+            font-family: 'Inter', sans-serif;
         }
     </style>
 </head>
-<body>
-    <div class="container">
-        <h2>NewsGuard - Fake News Detector</h2>
-        <form method="POST" action="/predict">
-            <textarea name="news" placeholder="Paste your news article or headline here..."></textarea>
-            <button type="submit">Check Authenticity</button>
-        </form>
+<body class="bg-slate-100 flex items-center justify-center min-h-screen p-6">
+    <!-- Main container for the card -->
+    <div class="bg-white p-8 md:p-12 rounded-3xl shadow-xl w-full max-w-2xl">
 
+        <!-- Title and subtitle section -->
+        <div class="text-center mb-8">
+            <h1 class="text-4xl md:text-5xl font-extrabold text-purple-600 mb-2 leading-tight">
+                NewsGuard
+            </h1>
+            <p class="text-lg text-gray-500 font-medium">Fake News Detector</p>
+        </div>
+
+        <!-- Form for user input -->
+        <form method="POST" action="/predict">
+            <textarea
+                name="news"
+                placeholder="Paste your news article or headline here..."
+                rows="10"
+                class="w-full p-4 text-base border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-400 focus:border-transparent transition-all duration-300 shadow-sm"
+            ></textarea>
+            <button
+                type="submit"
+                class="mt-6 w-full py-4 bg-purple-500 text-white font-bold text-lg rounded-lg shadow-lg hover:bg-purple-600 transition-colors duration-300 transform hover:-translate-y-1"
+            >
+                Check Authenticity
+            </button>
+        </form>
         {% if result %}
             <div class="result {% if result == 'Real' %}real{% else %}fake{% endif %}">
                 Result: {{ result }}
