@@ -22,3 +22,4 @@ NewsGuard is a Flask-based web application that detects whether a news headline/
 ---
 
 ## 📂 Project Structure
+<img width="1849" height="874" alt="Screenshot 2025-09-13 124003" src="https://github.com/user-attachments/assets/2b211e2b-81cb-41c2-bcc2-13775aa0e3ab" />
